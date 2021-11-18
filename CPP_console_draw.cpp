@@ -127,36 +127,56 @@ int main()
 	initGraph();
 	//-------------------------------
 
+	int delay = 250;
+
 	point(20, 30);
+	Sleep(delay);
+
 	point(25, 30, RGB(255, 55, 55));
+	Sleep(delay);
 
 	for (int i = 0; i < 5; i++)
 	{
 		setBrush(i, 1, RGB(255, 0, 0));
 		line(50 + i * 10, 50, 200 + i * 10, 300);
 	}
-	for (int i = 0; i <= 51; i++)
+
+	Sleep(delay);
+	for (int i = 0; i <= 255; i++)
 	{
-		setBrush(0, 8, RGB(i * 5, i * 5, i * 5));
-		line(100 + i * 10, 50, 300 + i * 10, 300);
+		setBrush(0, 8, RGB(i, i, i));
+		line(100 + i*2, 50, 300 + i*2, 300);
 	}
 
+	Sleep(delay);
 	drawText("Text example bgcolored", 300, 150, RGB(20, 25, 228), RGB(200, 255, 255));
+
+	Sleep(delay);
 	drawText("Text example transparent", 500, 150, RGB(20, 25, 228));
 
+	Sleep(delay);
 	setBrush(0, 3, RGB(0, 200, 0));
 	ellipse(900, 100, 100, 50, false);
+
+	Sleep(delay);
 	circle(1100, 100, 50, false);
 
+	Sleep(delay);
 	ellipse(900, 210, 100, 50);
+	
+	Sleep(delay);
 	circle(1100, 210, 50);
 	
-
+	Sleep(delay);
 	setBrush(0, 3, RGB(0, 200, 200));
 	rectangle(1200, 100, 100, 50);
-	rectangle(1200, 210, 70, 70, RGB(50, 120, 120));
+
+	Sleep(delay);
+	rectangle(1200, 210, 70, 70, RGB(120, 50, 120));
 
 	//-------------------------------
 	closeGraph();
+
+
 	return 0;
 }
