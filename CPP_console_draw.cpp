@@ -37,29 +37,19 @@ void line(double x1, double y1, double x2, double y2)
 	LineTo(hdc, x2, y2);
 }
 
-void point(double x, double y)
-{
-	SetPixel(hdc, x, y, RGB(255, 255, 255));
-}
-
-void point(double x, double y, COLORREF color)
+void point(double x, double y, COLORREF color = RGB(255, 255, 255))
 {
 	SetPixel(hdc, x, y, color);
 }
 
-void setBrush(int style, int width, COLORREF color, COLORREF bgcolor)
+void setBrush(int style, int width, COLORREF color, COLORREF bgcolor = RGB(0, 0, 0))
 {
 	pen = CreatePen(style, width, color);
 	SetBkColor(hdc, bgcolor);
 	SelectObject(hdc, pen);
 }
 
-void setBrush(int style, int width, COLORREF color)
-{
-	setBrush(style, width, color, RGB(0, 0, 0));
-}
-
-void drawTextColored(std::string text, double x, double y, COLORREF color)
+inline void drawTextColored(std::string text, double x, double y, COLORREF color)
 {
 	SetTextColor(hdc, color);
 	RECT textRect;
@@ -101,7 +91,7 @@ void circle(double x, double y, double radius, bool isFilled = true)
 		SelectObject(hdc, oldbrush);
 	}
 	else
-		Ellipse(hdc, x - radius, y - radius, x + radius, y + radius);	
+		Ellipse(hdc, x - radius, y - radius, x + radius, y + radius);
 }
 
 void rectangle(double x, double y, double width, double height)
@@ -129,6 +119,7 @@ int main()
 
 	int delay = 250;
 
+
 	point(20, 30);
 	Sleep(delay);
 
@@ -145,7 +136,7 @@ int main()
 	for (int i = 0; i <= 255; i++)
 	{
 		setBrush(0, 8, RGB(i, i, i));
-		line(100 + i*2, 50, 300 + i*2, 300);
+		line(100 + i * 2, 50, 300 + i * 2, 300);
 	}
 
 	Sleep(delay);
@@ -163,10 +154,10 @@ int main()
 
 	Sleep(delay);
 	ellipse(900, 210, 100, 50);
-	
+
 	Sleep(delay);
 	circle(1100, 210, 50);
-	
+
 	Sleep(delay);
 	setBrush(0, 3, RGB(0, 200, 200));
 	rectangle(1200, 100, 100, 50);
